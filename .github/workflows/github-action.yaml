@@ -15,5 +15,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: echo "Installing dependencies"
+      - run: npm ci
+      - run: echo "Running unit tests"
       - run: npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
