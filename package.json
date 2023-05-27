@@ -1,12 +1,12 @@
 {
   "name": "example-api",
   "version": "1.0.0",
-  "description": "## Getting started Initialize npm project by running the following command: ```bash npm init -y ```",
+  "description": "Example API",
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
     "build": "tsc --build tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "c8 ava"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +15,27 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "@ava/typescript": "^4.0.0",
     "@types/express": "^4.17.17",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",
+    "ava": "^5.3.0",
+    "c8": "^7.13.0",
     "eslint": "^8.41.0",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "ava": {
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ],
+    "typescript": {
+      "compile": "tsc",
+      "rewritePaths": {
+        "src/": "dist/"
+      }
+    }
   }
 }

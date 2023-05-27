@@ -91,3 +91,36 @@ To run the image run
 ```bash
 docker run --rm -p 8080:8080 -t example-api
 ```
+
+## Adding unit testing
+We will use `ava` as the unit test runner. To start run the command:
+```bash
+npm init ava
+```
+
+Setup config inside package.json
+```json
+  "ava": {
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ],
+    "typescript": {
+      "compile": "tsc",
+      "rewritePaths": {
+        "src/": "dist/"
+      }
+    }
+  }
+```
+
+Add coverage support
+```bash
+npm install --save-dev c8
+```
+
+Update test (in package.json) script to use coverage
+```json
+{
+   "test": "c8 ava"
+}
+```
